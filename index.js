@@ -1,12 +1,12 @@
 'use strict';
 
 module.exports = function(ret, conf, settings, opt) {
-    var content = 'boost.addCSS("';
+    var content = 'window.boost && boost.addStyle && boost.addStyle("';
 
     for (var key in ret.src) {
         var item = ret.src[key];
         if (key.indexOf('.css') >= 0) {
-            content += item._content;
+            content += item._content.replace(/[\n]/ig, '');
         }
     }
 
